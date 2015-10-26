@@ -25,8 +25,9 @@ public class Key24 {
     }
 
     public static void apply(byte[] data, byte seed, byte shift, byte offset){
+        byte code = (byte) (shift * seed - offset);
         for (int i = 0; i < data.length; i++) {
-            byte code = (byte) (shift * seed - offset);
+            code = (byte) (shift * code - offset);
             data[i] = (byte) (data[i] ^ code);
         }
     }

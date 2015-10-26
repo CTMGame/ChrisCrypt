@@ -32,8 +32,9 @@ public class Key192 {
     }
 
     public static void apply(long[] data, long seed, long shift, long offset){
+        long code = (shift * seed - offset);
         for (int i = 0; i < data.length; i++) {
-            long code = (shift * seed - offset);
+            code = shift * code - offset;
             data[i] = (data[i] ^ code);
         }
     }
